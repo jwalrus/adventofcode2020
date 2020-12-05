@@ -2,6 +2,8 @@ package jwalrus.adventofcode
 
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.ints.shouldBeExactly
+import jwalrus.adventofcode.Day02.part1
+import jwalrus.adventofcode.Day02.part2
 
 class Day02Spec : DescribeSpec({
 
