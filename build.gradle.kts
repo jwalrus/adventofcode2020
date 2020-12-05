@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "1.4.10"
+    kotlin("kapt") version "1.4.20"
 }
 
 group = "jwalrus"
@@ -14,6 +15,7 @@ repositories {
 }
 
 dependencies {
+    kapt("io.arrow-kt:arrow-meta:$arrowVersion")
     implementation(kotlin("stdlib-jdk8"))
     implementation("io.arrow-kt:arrow-core:$arrowVersion")
     implementation("io.arrow-kt:arrow-fx:$arrowVersion")
@@ -26,6 +28,7 @@ dependencies {
 tasks {
     compileKotlin {
         kotlinOptions.jvmTarget = "1.8"
+        kotlinOptions.freeCompilerArgs = listOf("-Xinline-classes")
     }
     compileTestKotlin {
         kotlinOptions.jvmTarget = "1.8"
