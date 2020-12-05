@@ -22,15 +22,20 @@ object Day05 {
         .let { (col, row) -> Pair(column(col), row(row)) }
         .let { (col, row) -> col * 8 + row }
 
-    fun part1(xs: List<String>): Int = xs.map(Day05::seat).maxOrNull() ?: 0
+    /* much better way ... */
+    fun seatBinary(s: String): Int = s.replace("F|L".toRegex(), "0")
+        .replace("B|R".toRegex(), "1")
+        .toInt(radix = 2)
+
+    fun part1(xs: List<String>): Int = xs.map(Day05::seatBinary).maxOrNull() ?: 0
 
     fun part2(xs: List<String>): Int {
+        val ticketed = xs.map(Day05::seatBinary).toSet()
         val min = 0
-        val max = part1(xs)
+        val max = ticketed.maxOrNull() ?: 0
         val allSeats = (min..max).toSet()
-        val ticketed = xs.map(Day05::seat).toSet()
         return (allSeats - ticketed).let { seats ->
-            seats.filter { it != 0 && it != max }
+            seats.filter { it != min && it != max }
                 .first { (it - 1) !in seats && (it + 1) !in seats }
         }
     }
