@@ -4,6 +4,7 @@ import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.ints.shouldBeExactly
 import jwalrus.adventofcode.Day01.part1
 import jwalrus.adventofcode.Day01.part2
+import jwalrus.adventofcode.util.load
 
 class Day01Spec : DescribeSpec ({
 

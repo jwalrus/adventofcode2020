@@ -2,6 +2,7 @@ package jwalrus.adventofcode
 
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.longs.shouldBeExactly
+import jwalrus.adventofcode.util.load
 
 class Day03Spec : DescribeSpec({
 

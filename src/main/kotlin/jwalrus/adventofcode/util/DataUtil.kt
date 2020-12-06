@@ -1,4 +1,4 @@
-package jwalrus.adventofcode
+package jwalrus.adventofcode.util
 
 import java.nio.file.Paths
 

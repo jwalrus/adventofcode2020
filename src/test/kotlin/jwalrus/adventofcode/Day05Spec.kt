@@ -9,6 +9,7 @@ import jwalrus.adventofcode.Day05.part1
 import jwalrus.adventofcode.Day05.part2
 import jwalrus.adventofcode.Day05.partition
 import jwalrus.adventofcode.Day05.seat
+import jwalrus.adventofcode.util.load
 
 class Day05Spec : DescribeSpec({
 
