@@ -12,11 +12,11 @@ class Day03Spec : DescribeSpec({
     describe("part 1") {
 
         it("sample data = 7") {
-            Map(sample).part1(1, 3) shouldBeExactly 7
+            SledMap(sample).part1(1, 3) shouldBeExactly 7
         }
 
         it("challenge data = 289") {
-            Map(challenge).part1(1, 3) shouldBeExactly 289
+            SledMap(challenge).part1(1, 3) shouldBeExactly 289
         }
     }
 
@@ -31,11 +31,11 @@ class Day03Spec : DescribeSpec({
         )
 
         it("sample data = 336") {
-            Map(sample).part2(slopes) shouldBeExactly 336
+            SledMap(sample).part2(slopes) shouldBeExactly 336
         }
 
         it("challenge data = 5,522,401,584") {
-            Map(challenge).part2(slopes) shouldBeExactly 5_522_401_584
+            SledMap(challenge).part2(slopes) shouldBeExactly 5_522_401_584
         }
     }
 })

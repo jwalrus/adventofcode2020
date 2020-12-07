@@ -1,6 +1,6 @@
 package jwalrus.adventofcode
 
-class Map(private val map: List<String>) {
+class SledMap(private val map: List<String>) {
 
     private val height = map.size
     private val width = map.first().length

@@ -28,7 +28,7 @@ dependencies {
 tasks {
     compileKotlin {
         kotlinOptions.jvmTarget = "1.8"
-        kotlinOptions.freeCompilerArgs = listOf("-Xinline-classes")
+        kotlinOptions.freeCompilerArgs = listOf("-Xinline-classes", "-nowarn")
     }
     compileTestKotlin {
         kotlinOptions.jvmTarget = "1.8"
