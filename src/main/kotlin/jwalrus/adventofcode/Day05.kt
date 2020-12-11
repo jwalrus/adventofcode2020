@@ -1,29 +1,31 @@
 package jwalrus.adventofcode
 
+import jwalrus.adventofcode.util.load
+
 
 object Day05 {
 
-    fun partition(s: String): Pair<String, String> = Pair(s.take(7), s.takeLast(3))
+    private fun partition(s: String): Pair<String, String> = Pair(s.take(7), s.takeLast(3))
 
-    fun interval(l: Int, u: Int): Int = (u - l) / 2
+    private fun interval(l: Int, u: Int): Int = (u - l) / 2
 
-    tailrec fun find(s: String, l: Int, u: Int): Int =
+    private tailrec fun find(s: String, l: Int, u: Int): Int =
         when (s.firstOrNull()) {
             'F', 'L' -> find(s.drop(1), l, l + interval(l, u))
             'B', 'R' -> find(s.drop(1), u - interval(l, u), u)
             else -> l
         }
 
-    fun column(s: String): Int = find(s, 0, 127)
+    private fun column(s: String): Int = find(s, 0, 127)
 
-    fun row(s: String): Int = find(s, 0, 7)
+    private fun row(s: String): Int = find(s, 0, 7)
 
-    fun seat(s: String): Int = partition(s)
+    private fun seat(s: String): Int = partition(s)
         .let { (col, row) -> Pair(column(col), row(row)) }
         .let { (col, row) -> col * 8 + row }
 
     /* much better way ... */
-    fun seatBinary(s: String): Int = s.replace("F|L".toRegex(), "0")
+    private fun seatBinary(s: String): Int = s.replace("F|L".toRegex(), "0")
         .replace("B|R".toRegex(), "1")
         .toInt(radix = 2)
 
@@ -39,4 +41,11 @@ object Day05 {
                 .first { (it - 1) !in seats && (it + 1) !in seats }
         }
     }
+}
+
+fun main(): Unit = Day05.run {
+    val challenge = load("day05_data.txt")
+
+    println(part1(challenge)) // 835
+    println(part2(challenge)) // 649
 }

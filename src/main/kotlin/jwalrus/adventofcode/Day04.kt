@@ -2,6 +2,9 @@ package jwalrus.adventofcode
 
 import arrow.core.*
 import arrow.core.extensions.either.applicative.applicative
+import jwalrus.adventofcode.DayO4.part1
+import jwalrus.adventofcode.DayO4.part2
+import jwalrus.adventofcode.util.load
 
 private typealias Option<A> = Either<Unit, A>
 
@@ -92,3 +95,13 @@ object DayO4 {
         .count()
 }
 
+fun main(): Unit = DayO4.run {
+    val sample = load("day04_data_sample.txt")
+    val validSample = load("day04_data_sample_valid.txt")
+    val challenge = load("day04_data.txt")
+
+    println(sample.part1()) // 2
+    println(challenge.part1()) // 228
+    println(validSample.part2()) // 4
+    println(challenge.part2()) // 175
+}
