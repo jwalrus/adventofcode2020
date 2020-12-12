@@ -1,5 +1,6 @@
 package jwalrus.adventofcode
 
+import jwalrus.adventofcode.util.createVector
 import jwalrus.adventofcode.util.load
 
 private typealias Seats = Map<Pair<Int, Int>, Day11.Coord>
@@ -10,9 +11,6 @@ object Day11 {
         Pair(-1, -1), Pair(-1, 0), Pair(-1, 1), Pair(1, 1),
         Pair(1, 0), Pair(1, -1), Pair(0, -1), Pair(0, 1)
     )
-
-    fun createVector(start: Pair<Int, Int>, direction: Pair<Int, Int>): Sequence<Pair<Int, Int>> =
-        generateSequence(start) { it.first + direction.first to it.second + direction.second }
 
     fun firstNeighbor(coord: Pair<Int, Int>, seats: Seats, direction: Pair<Int, Int>): Pair<Int, Int>? {
         return createVector(coord, direction).drop(1)

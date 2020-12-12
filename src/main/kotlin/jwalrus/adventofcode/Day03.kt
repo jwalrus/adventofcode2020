@@ -1,5 +1,6 @@
 package jwalrus.adventofcode
 
+import jwalrus.adventofcode.util.createVector
 import jwalrus.adventofcode.util.load
 
 class SledMap(private val map: List<String>) {
@@ -7,17 +8,14 @@ class SledMap(private val map: List<String>) {
     private val height = map.size
     private val width = map.first().length
 
-    private fun treesOnPath(down: Int, right: Int): Long {
-        tailrec fun go(x: Int, y: Int, acc: Long): Long {
-            return if (x >= height) acc
-            else go(x + down, (y + right) % width, if (map[x][y] == '#') acc + 1 else acc)
-        }
-        return go(down, right, 0)
-    }
+    // for some reason I decided to switch the usual meaning of x and y ¯\_(ツ)_/¯
+    private fun treesOnPath(down: Int, right: Int): Long = createVector(Pair(0, 0), Pair(down, right))
+        .takeWhile { (x, _) -> x < height }
+        .fold(0L) { acc, (x, y) -> acc + if (map[x][y % width] == '#') 1 else 0 }
 
     fun part1(down: Int, right: Int): Long = treesOnPath(down, right)
 
-    fun part2(slopes: List<Pair<Int, Int>>): Long = slopes.map { (x, y) -> treesOnPath(x, y) }.reduce(Long::times)
+    fun part2(slopes: List<Pair<Int, Int>>): Long = slopes.fold(1L) { acc, (x,y) -> acc * treesOnPath(x, y) }
 }
 
 fun main() {
